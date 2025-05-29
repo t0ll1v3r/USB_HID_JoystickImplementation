@@ -41,17 +41,51 @@
 #include "udi_hid.h"
 #include "udi_hid_generic.h"
 
-/**
- * \ingroup udi_hid_generic_group
- * \defgroup udi_hid_generic_group_single_desc USB device descriptors for a single interface
- *
- * The following structures provide the USB device descriptors required
- * for USB Device with a single interface HID generic.
- *
- * It is ready to use and do not require more definition.
- *
- * @{
- */
+/* ===== HID Joystick – 2-byte IN report (X, Y) ===================== */
+// const uint8_t udi_hid_generic_report_desc[] =
+// {
+// 	0x05, 0x01,				/* Usage Page (Generic Desktop)	*/
+// 	0x09, 0x04,				/* Usage (Joystick)				*/
+// 	0xA1, 0x01,				/* Collection (Application)		*/
+// 	  0xA1, 0x00,			/* Collection (Physical)		*/
+// 		0x05, 0x01,			/* Usage Page (Generic Desktop)	*/
+// 		0x09, 0x30, 		/* Usage (X)					*/
+// 		0x09, 0x31,			/* Usage (Y)					*/
+// 		0x15, 0x00,			/* Logical Minimum (0)			*/
+// 		0x26, 0xFF, 0x00,	/* Logical Maximum (255)		*/
+// 		0x75, 0x08,			/* Report Size (8 bits)			*/
+// 		0x95, 0x02,			/* Report Count (2 → X & Y)		*/
+// 		0x81, 0x02,			/* Input (Data,Var,Abs)			*/
+// 	  0xC0,					/* End Collection				*/
+// 	0xC0					/* End Collection				*/
+// };
+
+// const uint8_t hid_joy_report_desc[] =
+// {
+// 	0x05, 0x01,				/* Usage Page (Generic Desktop)	*/
+// 	0x09, 0x04,				/* Usage (Joystick)				*/
+// 	0xA1, 0x01,				/* Collection (Application)		*/
+// 	  0xA1, 0x00,			/* Collection (Physical)		*/
+// 		0x05, 0x01,			/* Usage Page (Generic Desktop)	*/
+// 		0x09, 0x30, 		/* Usage (X)					*/
+// 		0x09, 0x31,			/* Usage (Y)					*/
+// 		0x15, 0x00,			/* Logical Minimum (0)			*/
+// 		0x26, 0xFF, 0x00,	/* Logical Maximum (255)		*/
+// 		0x75, 0x08,			/* Report Size (8 bits)			*/
+// 		0x95, 0x02,			/* Report Count (2 → X & Y)		*/
+// 		0x81, 0x02,			/* Input (Data,Var,Abs)			*/
+// 	  0xC0,					/* End Collection				*/
+// 	0xC0					/* End Collection				*/
+// };
+
+// // #define udi_hid_generic_report_desc hid_joy_report_desc
+
+// #undef UDI_HID_GENERIC_REPORT_DESC
+// #undef UDI_HID_GENERIC_REPORT_DESC_SIZE
+
+// #define UDI_HID_GENERIC_REPORT_DESC hid_joy_report_desc
+// #define UDI_HID_GENERIC_REPORT_DESC_SIZE sizeof(hid_joy_report_desc)
+
 
 //! Only one interface for this device
 #define  USB_DEVICE_NB_INTERFACE       1

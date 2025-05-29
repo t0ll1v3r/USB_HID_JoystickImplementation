@@ -77,6 +77,23 @@ extern "C" {
 }
 #endif
 
+
+// // custom 2 byte report for joystick
+// extern const uint8_t hid_joy_report_desc[];
+
+// // override generic template macros before udi_hid_generic.h sees them
+// #define UDI_HID_GENERIC_REPORT_DESC hid_joy_report_desc
+// #define UDI_HID_GENERIC_REPORT_DESC_SIZE sizeof(hid_joy_report_desc)
+
+// extern const uint8_t udi_hid_generic_report_desc[];
+
+// #define UDI_HID_GENERIC_REPORT_DESC udi_hid_generic_report_desc
+// #define UDI_HID_GENERIC_REPORT_DESC_SIZE (sizeof(udi_hid_generic_report_desc))
+
+
+// joystick is IN-only, so ignore any OUT or feature reports
+#define UDI_HID_GENERIC_REPORT_OUT(ptr)	((void)(ptr)) // do nothing stub
+
 #include "udi_hid_generic.h"
 
 #endif // _UDI_HID_GENERIC_CONF_H_

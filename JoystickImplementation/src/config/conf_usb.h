@@ -44,9 +44,13 @@
  * @{
  */
 
+#ifndef USB_PID_ATMEL_ASF_HIDJOYSTICK
+#	define USB_PID_ATMEL_ASF_HIDJOYSTICK 0x2132
+#endif
+
 //! Device definition (mandatory)
 #define  USB_DEVICE_VENDOR_ID             USB_VID_ATMEL
-#define  USB_DEVICE_PRODUCT_ID            USB_PID_ATMEL_ASF_HIDGENERIC
+#define  USB_DEVICE_PRODUCT_ID            USB_PID_ATMEL_ASF_HIDJOYSTICK
 #define  USB_DEVICE_MAJOR_VERSION         1
 #define  USB_DEVICE_MINOR_VERSION         0
 #define  USB_DEVICE_POWER                 100 // Consumption on Vbus line (mA)
@@ -59,7 +63,7 @@
 
 //! USB Device string definitions (Optional)
 #define  USB_DEVICE_MANUFACTURE_NAME      "ATMEL ASF"
-#define  USB_DEVICE_PRODUCT_NAME          "HID Generic"
+#define  USB_DEVICE_PRODUCT_NAME          "HID Joystick"
 // #define  USB_DEVICE_SERIAL_NAME           "12...EF"
 
 /**
@@ -107,13 +111,13 @@
 //! Interface callback definition
 #define  UDI_HID_GENERIC_ENABLE_EXT()        main_generic_enable()
 #define  UDI_HID_GENERIC_DISABLE_EXT()       main_generic_disable()
-#define  UDI_HID_GENERIC_REPORT_OUT(ptr)     ui_led_change(ptr)
+// #define  UDI_HID_GENERIC_REPORT_OUT(ptr)     ui_led_change(ptr)
 #define  UDI_HID_GENERIC_SET_FEATURE(report) main_hid_set_feature(report)
 
 //! Sizes of I/O reports
-#define  UDI_HID_REPORT_IN_SIZE             8
-#define  UDI_HID_REPORT_OUT_SIZE            8
-#define  UDI_HID_REPORT_FEATURE_SIZE        4
+#define  UDI_HID_REPORT_IN_SIZE             2
+#define  UDI_HID_REPORT_OUT_SIZE            0
+#define  UDI_HID_REPORT_FEATURE_SIZE        0
 
 //! Sizes of I/O endpoints
 #define  UDI_HID_GENERIC_EP_SIZE            8
