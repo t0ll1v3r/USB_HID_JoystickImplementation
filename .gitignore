@@ -1,0 +1,25 @@
+# Microchip Studio specific
+*.aps
+*.elf
+*.hex
+*.lss
+*.map
+*.eep
+*.bin
+*.o
+*.d
+*.a
+*.td
+*.srec
+*.dep
+*.doxygen
+
+# General
+*.log
+*.tmp
+*.bak
+*.swp
+
+# Build directories
+Debug/
+Release/
