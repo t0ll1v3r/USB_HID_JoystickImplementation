@@ -43,8 +43,7 @@
 #include <string.h>
 
 
-// extern const uint8_t udi_hid_generic_report_desc[];
-// extern const uint8_t hid_joy_report_desc[];
+// extern const uint8_t udi_hid_generic_report_desc[]; // added by UniWest
 
 /**
  * \ingroup udi_hid_generic_group
@@ -103,7 +102,7 @@ COMPILER_WORD_ALIGNED
 
 //@}
 
-//! HID report descriptor for standard HID generic
+/* ===== HID Joystick – 2-byte IN report (X, Y) ===================== */
 UDC_DESC_STORAGE udi_hid_generic_report_desc_t udi_hid_generic_report_desc = { {
 	0x05, 0x01,				/* Usage Page (Generic Desktop)	*/
 	0x09, 0x04,				/* Usage (Joystick)				*/
@@ -120,7 +119,7 @@ UDC_DESC_STORAGE udi_hid_generic_report_desc_t udi_hid_generic_report_desc = { {
 	  0xC0,					/* End Collection				*/
 	0xC0					/* End Collection				*/
 		}
-};
+};	// array modified by UniWest
 
 /**
  * \name Internal routines
