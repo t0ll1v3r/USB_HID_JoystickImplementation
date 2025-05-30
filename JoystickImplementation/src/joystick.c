@@ -18,6 +18,10 @@ static int8_t jstk_scan(uint16_t jstk_bits) {
     return -1;                                  // nothing being touched
 }
 
+/*
+ * The sliders are really just 12 buttons which are pressed as you move your finger up/down or left/right.
+ * Similar to sweeping your fingers across the keys of a piano.
+ */
 
 // vertical slider
 static uint16_t jstk_readVertRaw(void) {
@@ -74,8 +78,8 @@ uint8_t jstk_readMask(void)
         return 0;                           // no contact
 
     // decide which slider is moved furthest from center buy computing 'distance' from middle
-    uint8_t dV = (vi < 0) ? 0 : (vi > 5 ? vi - 5 : 5 - vi);
-    uint8_t dH = (hi < 0) ? 0 : (hi > 5 ? hi - 5 : 5 - hi);
+    uint8_t dV = (vi < 0) ? 0 : (vi > 5 ? vi - 5 : 5 - vi); // vertical slider 'distance'   (dV)
+    uint8_t dH = (hi < 0) ? 0 : (hi > 5 ? hi - 5 : 5 - hi); // horizontal slider 'distance' (dH)
 
     int8_t jstk_use = (dV >= dH) ? vi : hi; // slider with greatest distance wins
 
@@ -90,13 +94,13 @@ uint8_t jstk_ledMask(int8_t idx)
     if (idx == 5 || idx == 6)   // center zone
         return (1u<<3) | (1u<<4);  // LED4 (bit3) + LED5 (bit4)
 
-    uint8_t d = (idx < 5) ? (5 - idx) : (idx - 6);  // computes 'distance' from center
+    uint8_t d = (idx < 5) ? (5 - idx) : (idx - 6);  // computes 'distance' from center (d)
     /*
     idx: 0 1 2 3 4 | 5 6 | 7 8 9 10 11
     d:   5 4 3 2 1 |  -  | 1 2 3  4  5
     */
 
-    uint8_t N = (d < 2 ? 2 : (d + 1));  // decide how many LED's should activate
+    uint8_t N = (d < 2 ? 2 : (d + 1));  // decide how many LED's should activate (N)
     if (N > 4) N = 4;
     /*
     d: 1 2 3 4 5
