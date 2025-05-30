@@ -7,12 +7,12 @@
 #include "led.h"
 #include "joystick.h"
 #include "udi_hid_generic.h"
-#include "76319_io_initialization.h"
+// #include "76319_io_initialization.h"
 
 #define SLIDER_COUNT   12
 
 uint8_t jstk_mask;  // bitmask of LED's to turn on
-// volatile uint8_t jstk_testMode;
+volatile uint8_t jstk_testMode;
 
 
 static int8_t jstk_scan(uint16_t jstk_bits) {
