@@ -43,7 +43,6 @@
  * USB Device Configuration
  * @{
  */
-
 #ifndef USB_PID_ATMEL_ASF_HIDJOYSTICK
 #	define USB_PID_ATMEL_ASF_HIDJOYSTICK 0x2132
 #endif
@@ -108,16 +107,16 @@
  * Configuration of HID Generic interface
  * @{
  */
-//! Interface callback definition
+//! Interface callback definition, modified by UniWest
 #define  UDI_HID_GENERIC_ENABLE_EXT()        main_generic_enable()
 #define  UDI_HID_GENERIC_DISABLE_EXT()       main_generic_disable()
 // #define  UDI_HID_GENERIC_REPORT_OUT(ptr)     ui_led_change(ptr)
 #define  UDI_HID_GENERIC_SET_FEATURE(report) main_hid_set_feature(report)
 
-//! Sizes of I/O reports
-#define  UDI_HID_REPORT_IN_SIZE             2
-#define  UDI_HID_REPORT_OUT_SIZE            0
-#define  UDI_HID_REPORT_FEATURE_SIZE        0
+//! Sizes of I/O reports, modified by UniWest
+#define  UDI_HID_REPORT_IN_SIZE             2	// changed from 8 -> 2
+#define  UDI_HID_REPORT_OUT_SIZE            0	// changed from 8 -> 0
+#define  UDI_HID_REPORT_FEATURE_SIZE        0	// changed from 4 -> 0
 
 //! Sizes of I/O endpoints
 #define  UDI_HID_GENERIC_EP_SIZE            8

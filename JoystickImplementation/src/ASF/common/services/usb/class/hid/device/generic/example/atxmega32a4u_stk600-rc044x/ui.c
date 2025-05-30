@@ -42,18 +42,18 @@ static uint8_t ui_hid_report[UDI_HID_REPORT_OUT_SIZE];
 
 void ui_init(void)
 {
-	LED_On(LED0_GPIO);
-	LED_Off(LED1_GPIO);
-	LED_Off(LED2_GPIO);
-	LED_Off(LED3_GPIO);
+// 	LED_On(LED0_GPIO);
+// 	LED_Off(LED1_GPIO);
+// 	LED_Off(LED2_GPIO);
+// 	LED_Off(LED3_GPIO);
 }
 
 void ui_powerdown(void)
 {
-	LED_Off(LED0_GPIO);
-	LED_Off(LED1_GPIO);
-	LED_Off(LED2_GPIO);
-	LED_Off(LED3_GPIO);
+	// LED_Off(LED0_GPIO);
+	// LED_Off(LED1_GPIO);
+	// LED_Off(LED2_GPIO);
+	// LED_Off(LED3_GPIO);
 }
 
 void ui_wakeup_enable(void)
@@ -99,7 +99,7 @@ ISR(PORTB_INT0_vect)
 
 void ui_wakeup(void)
 {
-	LED_On(LED0_GPIO);
+	// LED_On(LED0_GPIO);
 }
 
 void ui_process(uint16_t framenumber)
@@ -110,10 +110,10 @@ void ui_process(uint16_t framenumber)
 	static uint8_t cpt_sof = 0;
 
 	if ((framenumber % 1000) == 0) {
-		LED_On(LED1_GPIO);
+		// LED_On(LED1_GPIO);
 	}
 	if ((framenumber % 1000) == 500) {
-		LED_Off(LED1_GPIO);
+		// LED_Off(LED1_GPIO);
 	}
 	// Scan process running each 40ms
 	cpt_sof++;
@@ -142,20 +142,20 @@ void ui_led_change(uint8_t *report)
 		// A led must be on
 		switch(report[1]) {
 			case '2':
-			LED_On(LED2_GPIO);
+			// LED_On(LED2_GPIO);
 			break;
 			case '3':
-			LED_On(LED3_GPIO);
+			// LED_On(LED3_GPIO);
 			break;
 		}
 	} else {
 		// A led must be off
 		switch(report[1]) {
 			case '2':
-			LED_Off(LED2_GPIO);
+			// LED_Off(LED2_GPIO);
 			break;
 			case '3':
-			LED_Off(LED3_GPIO);
+			// LED_Off(LED3_GPIO);
 			break;
 		}
 	}

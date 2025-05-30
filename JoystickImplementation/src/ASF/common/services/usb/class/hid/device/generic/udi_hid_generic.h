@@ -69,12 +69,13 @@ typedef struct {
 	usb_iface_desc_t iface;
 	usb_hid_descriptor_t hid;
 	usb_ep_desc_t ep_in;
-	usb_ep_desc_t ep_out;
+	// usb_ep_desc_t ep_out;
 } udi_hid_generic_desc_t;
+
 
 //! Report descriptor for HID generic
 typedef struct {
-	uint8_t array[27];
+	uint8_t array[27]; // changed from 53 -> 27
 } udi_hid_generic_report_desc_t;
 
 
@@ -109,12 +110,6 @@ typedef struct {
    .ep_in.bmAttributes        = USB_EP_TYPE_INTERRUPT,\
    .ep_in.wMaxPacketSize      = LE16(UDI_HID_GENERIC_EP_SIZE),\
    .ep_in.bInterval           = 4,\
-   .ep_out.bLength            = sizeof(usb_ep_desc_t),\
-   .ep_out.bDescriptorType    = USB_DT_ENDPOINT,\
-   .ep_out.bEndpointAddress   = UDI_HID_GENERIC_EP_OUT,\
-   .ep_out.bmAttributes       = USB_EP_TYPE_INTERRUPT,\
-   .ep_out.wMaxPacketSize     = LE16(UDI_HID_GENERIC_EP_SIZE),\
-   .ep_out.bInterval          = 4,\
    }
 //@}
 

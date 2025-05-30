@@ -68,7 +68,7 @@ extern "C" {
 //@{
 //! 2 endpoints used by HID generic standard interface
 #undef USB_DEVICE_MAX_EP   // undefine this definition in header file
-#define  USB_DEVICE_MAX_EP    2
+#define  USB_DEVICE_MAX_EP    1	// changed from 2 -> 1 by UniWest
 //@}
 
 //@}
@@ -78,21 +78,8 @@ extern "C" {
 #endif
 
 
-// // custom 2 byte report for joystick
-// extern const uint8_t hid_joy_report_desc[];
-
-// // override generic template macros before udi_hid_generic.h sees them
-// #define UDI_HID_GENERIC_REPORT_DESC hid_joy_report_desc
-// #define UDI_HID_GENERIC_REPORT_DESC_SIZE sizeof(hid_joy_report_desc)
-
-// extern const uint8_t udi_hid_generic_report_desc[];
-
-// #define UDI_HID_GENERIC_REPORT_DESC udi_hid_generic_report_desc
-// #define UDI_HID_GENERIC_REPORT_DESC_SIZE (sizeof(udi_hid_generic_report_desc))
-
-
-// joystick is IN-only, so ignore any OUT or feature reports
-#define UDI_HID_GENERIC_REPORT_OUT(ptr)	((void)(ptr)) // do nothing stub
+// #define UDI_HID_GENERIC_REPORT_OUT(ptr)	((void)(ptr)) // do nothing stub
+// #define UDI_HID_GENERIC_SET_FEATURE(ptr) (true)	// stub do nothin
 
 #include "udi_hid_generic.h"
 
