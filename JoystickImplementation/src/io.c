@@ -26,25 +26,12 @@
 #include "io.h"
 
 
-/****************************************************/
-/***************** Function Prototypes **************/
-/****************************************************/
-// Declaration Section - Function prototype declarations, for use only by this C file Only
-void initialize_PortA_io(void);
-void initialize_PortB_io(void);
-void initialize_PortC_io(void);
-void initialize_PortD_io(void);
-void initialize_PortE_io(void);
-void initialize_PortF_io(void);
-// void initialize_Port_R_io(void);
-
-
 //********************************************************************
 //  Section - Code - C Functions
 //********************************************************************
 
 //===================================================================
-void initialize_PortA_io(void)
+static void initialize_PortA_io(void)
 {
     // Initializes  PORT A IO bits 7-0 to Outputs.
 	//              Bits are LEDs drivers to control the front panel LEDs labeled as 8 to 1.
@@ -56,14 +43,14 @@ void initialize_PortA_io(void)
 
 
 //===================================================================
-void initialize_PortB_io(void)
+static void initialize_PortB_io(void)
 {
 	// Initialize Horizontal Slider switches port inputs (H_Slider 9 thru 12). (See Port E for remainder of H-Slider switch Positions).
 	//              Port B IO bits 3-0 to inputs with pull-ups enabled.
 	// Note         Port B IO bits 5-4 are spare IO pins - Initialize to inputs with pull-ups enabled.
 	// Initialize   Port B IO bit 1 drive for the Status LED. LEDs Output is "On" when Low, LEDs are "Off" when High.
 	// Initialize   Port B IO bit 0 F2-F4 column output for the Keypad key-code scan signal (Front Panel Buttons).
-	//              Refer to initialize_Port_F_io(void) below for other keypad Key-code signals.
+	//              Refer to initialize_PortF_io(void) below for other keypad Key-code signals.
 
 
 	// (Input Port Pins)
@@ -79,44 +66,11 @@ void initialize_PortB_io(void)
 	PORTB.DIRSET = (PIN6_bm | PIN7_bm);
 	PORTB.OUTSET = (PIN6_bm);													 // Set Status LED Output IO pin for LED to be "Off".
 	PORTB.OUTSET = (PIN7_bm);													 // Set Output pin "F2_F4_COL" for button column to Logic High (Button Disabled).
-
-/*
-// Test Code
-	PORTB.DIR = 0x0F0;												             // Set Direction Bits 4, 5, 6, 7 as output all others as input
-
-	// Lower bits pulled up
-	PORTB.PIN0CTRL = PORT_OPC_PULLUP_gc;										 // Declare pins with pull ups
-	PORTB.PIN1CTRL = PORT_OPC_PULLUP_gc;										 // Declare pins with pull ups
-	PORTB.PIN2CTRL = PORT_OPC_PULLUP_gc;										 // Declare pins with pull ups
-	PORTB.PIN3CTRL = PORT_OPC_PULLUP_gc;										 // Declare pins with pull ups
-    // Input pins should be logic high
-
-	// Lower bits pulled down
-	PORTB.PIN0CTRL = PORT_OPC_PULLDOWN_gc;										 // Declare pins with pull downs
-	PORTB.PIN1CTRL = PORT_OPC_PULLDOWN_gc;										 // Declare pins with pull downs
-	PORTB.PIN2CTRL = PORT_OPC_PULLDOWN_gc;										 // Declare pins with pull downs
-	PORTB.PIN3CTRL = PORT_OPC_PULLDOWN_gc;										 // Declare pins with pull downs
-    // Input pins should be logic low
-
-	// Lower bits pulled up
-	PORTB.PIN0CTRL = PORT_OPC_PULLUP_gc;										 // Declare pins with pull ups
-	PORTB.PIN1CTRL = PORT_OPC_PULLUP_gc;										 // Declare pins with pull ups
-	PORTB.PIN2CTRL = PORT_OPC_PULLUP_gc;										 // Declare pins with pull ups
-	PORTB.PIN3CTRL = PORT_OPC_PULLUP_gc;										 // Declare pins with pull ups
-    // Input pins should be logic high
-
-
-	PORTB.OUT = 0x00;													  // Set Output pins "F2_F4_COL" & "STATUS_LED_CATHODE" to Logic Low.
-	PORTB.OUT = 0x040;													  // Set Output pin "F2_F4_COL" to Logic Low & "STATUS_LED_CATHODE" to Logic High.
-	PORTB.OUT = 0x080;													  // Set Output pin "F2_F4_COL" to Logic High & "STATUS_LED_CATHODE" to Logic Low.
-	PORTB.OUT = 0x0C0;													  // Set Output pin "F2_F4_COL" to Logic High & "STATUS_LED_CATHODE" to Logic High.
-	PORTB.OUT = 0x00;                                                     // Set Output pins "F2_F4_COL" & "STATUS_LED_CATHODE" to Logic Low.
-*/
 }
 
 
 //===================================================================
-void initialize_PortC_io(void)
+static void initialize_PortC_io(void)
 {
 	// Initializes   PORTC IO bits 1-0 as Outputs with pull-ups enabled. Reserved IO pins for other IO later such as I2C link.
 	// Initializes   Vertical Slider Switches port inputs (V_Slider 1 thru 6). (See Port D for remainder of H-Slider switch Positions).
@@ -133,12 +87,11 @@ void initialize_PortC_io(void)
 
 	// (Output Port Pins)
 	PORTC.DIRSET = (PIN0_bm | PIN1_bm);											  // Declare pins as Outputs
-	// PORTC.OUTCLR = (PIN0_bm | PIN1_bm);											  // Declare pins Output levels
 	PORTC.OUTSET = (PIN0_bm | PIN1_bm);											  // Declare pins Output levels
 }
 
 //===================================================================
-void initialize_PortD_io(void)
+static void initialize_PortD_io(void)
 {
 	// Initializes 6 bits of PortD IO as inputs
 	// Initializes   Horizontal Slider Switches port inputs (H_Slider 1 thru 8). (See Port B for remainder of H-Slider switch Positions).
@@ -164,11 +117,11 @@ void initialize_PortD_io(void)
 
 
 //===================================================================
-void initialize_PortE_io(void)
+static void initialize_PortE_io(void)
 {
 	// Initializes all 8 bits of PortE IO as inputs
 	// Initializes   Horizontal Slider Switches port inputs (H_Slider 1 thru 8). (See Port B for remainder of H-Slider switch Positions).
-	// Initializes   PORTE IO bits 7-0 to Inputs with pull-ups enabled
+	// Initializes   PortE IO bits 7-0 to Inputs with pull-ups enabled
 
 	// (Input Port Pins)
 	PORTE.DIRCLR = (PIN0_bm | PIN1_bm | PIN2_bm | PIN3_bm | PIN4_bm | PIN5_bm | PIN6_bm | PIN7_bm);
@@ -184,7 +137,7 @@ void initialize_PortE_io(void)
 
 
 //===================================================================
-void initialize_PortF_io(void)
+static void initialize_PortF_io(void)
 {
 	// Initializes PortF IO - 4 bits are inputs and 4 bits are output for keypad key-code scanning.
 	// One additional keypad key-code scan signal (F2-F4 Column) is also initialized on Port B bit 7. See Inititalize_Port_B_io() above.
@@ -201,27 +154,7 @@ void initialize_PortF_io(void)
 	// (Output Port Pins)
 	PORTF.DIRSET = (PIN0_bm | PIN1_bm | PIN2_bm | PIN3_bm);						  // Keypad Column Pins
 	PORTF.OUTSET = (PIN0_bm | PIN1_bm | PIN2_bm | PIN3_bm);						  // Set pins to Logic High (Buttons Disabled)
-	// PORTF.OUTCLR = (PIN0_bm | PIN1_bm | PIN2_bm | PIN3_bm);						  // Set pins to Logic Low (Buttons Disabled)
 }
-
-
-//===================================================================
-/* void initialize_Port_R_io(void)
-{
-	// Ports R PR0 & PR1 bits are unused (spare) IO Ports - Reserved for a Crystal connection
-	// NOTES
-	// PORT R Pins
-	// 56, Pin Name - PDI     (TCF0 -> PDI_DATA)
-	// 57, Pin Name - RESET\  (TCF0 -> PDI_CLOCK)
-	// 58, Pin Name - PR0     (INTERRUPT -> SYNC), (USARTF0 -> XTAL2)
-	// 59, Pin Name - PR1     (INTERRUPT -> SYNC), (USARTF0 -> XTAL1)
-
-
-	// PORTR.DIRSET = (PIN0_bm | PIN1_bm);
-	// PORTR.OUTCLR = (PIN0_bm | PIN1_bm);
-}
-*/
-
 
 
 //===================================================================
@@ -233,5 +166,4 @@ void io_init(void)
 	initialize_PortD_io();		// (Vertical Slider Switch signals), (USB signals)
 	initialize_PortE_io();		// (Horizontal Slider Switch signals)
 	initialize_PortF_io();		// (COLUMN & ROW Keypad Scan Code signals)
-	// initialize_Ports_R_io();	// (Unused Port)
 }
