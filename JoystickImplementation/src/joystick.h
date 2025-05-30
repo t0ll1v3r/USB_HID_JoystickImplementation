@@ -13,7 +13,7 @@ int8_t jstk_readHoriIndex(void);
 uint8_t jstk_readMask(void);
 
 uint8_t jstk_ledMask(int8_t percent);
-uint8_t jstk_idxToAxis(int8_t idx);	// 0-11 -> 0-255
+uint8_t jstk_idxToAxis(int8_t idx);
 
 void jstk_usbTask(void);	// build and send 2 byte report
 
