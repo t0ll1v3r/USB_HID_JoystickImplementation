@@ -78,9 +78,6 @@ extern "C" {
 #endif
 
 
-// #define UDI_HID_GENERIC_REPORT_OUT(ptr)	((void)(ptr)) // do nothing stub
-// #define UDI_HID_GENERIC_SET_FEATURE(ptr) (true)	// stub do nothin
-
 #include "udi_hid_generic.h"
 
 #endif // _UDI_HID_GENERIC_CONF_H_

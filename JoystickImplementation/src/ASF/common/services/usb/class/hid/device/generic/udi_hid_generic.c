@@ -248,7 +248,7 @@ static void udi_hid_generic_setfeature_valid(void)
 {
 	if (sizeof(udi_hid_generic_report_feature) != udd_g_ctrlreq.payload_size)
 		return;	// Bad data
-	UDI_HID_GENERIC_SET_FEATURE(udi_hid_generic_report_feature);
+	// UDI_HID_GENERIC_SET_FEATURE(udi_hid_generic_report_feature);
 }
 
 // static void udi_hid_generic_report_out_received(udd_ep_status_t status,

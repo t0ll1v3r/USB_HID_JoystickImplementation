@@ -72,6 +72,6 @@ void main_remotewakeup_disable(void);
 
 /*! \brief Called by UDI HID generic when USB Host send a feature request
  */
-void main_hid_set_feature(uint8_t* report);
+// void main_hid_set_feature(uint8_t* report);
 
 #endif // _MAIN_H_

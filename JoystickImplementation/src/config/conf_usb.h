@@ -111,7 +111,7 @@
 #define  UDI_HID_GENERIC_ENABLE_EXT()        main_generic_enable()
 #define  UDI_HID_GENERIC_DISABLE_EXT()       main_generic_disable()
 // #define  UDI_HID_GENERIC_REPORT_OUT(ptr)     ui_led_change(ptr)
-#define  UDI_HID_GENERIC_SET_FEATURE(report) main_hid_set_feature(report)
+// #define  UDI_HID_GENERIC_SET_FEATURE(report) main_hid_set_feature(report)
 
 //! Sizes of I/O reports, modified by UniWest
 #define  UDI_HID_REPORT_IN_SIZE             2	// changed from 8 -> 2

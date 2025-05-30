@@ -52,14 +52,17 @@ int main(void)
 	// Initialize the sleep manager
 	sleepmgr_init();
 
-#if !SAM0
 	sysclk_init();
-	board_init();
-#else
-	system_init();
-#endif
-	ui_init();
-	ui_powerdown();
+//	board_init();
+
+// #if !SAM0
+// 	sysclk_init();
+// 	board_init();
+// #else
+// 	system_init();
+// #endif
+// 	ui_init();
+// 	ui_powerdown();
 
 
 	// Start USB stack to authorize VBus monitoring
@@ -67,35 +70,17 @@ int main(void)
 
 	// The main loop manages only the power mode
 	// because the USB management is done by interrupt
-	while (true) {
-#ifdef   USB_DEVICE_LOW_SPEED
-		// No USB "Keep a live" interrupt available in low speed
-		// to scan generic interface then use main loop
-		if (main_b_generic_enable) {
-			static volatile uint16_t virtual_sof_sub = 0;
-			static uint16_t virtual_sof = 0;
-			if (sysclk_get_cpu_hz()/50000 ==
-				virtual_sof_sub++) {
-				virtual_sof_sub = 0;
-				static uint16_t virtual_sof = 0;
-				ui_process(virtual_sof++);
-			}
-		}
-#else
-		sleepmgr_enter_sleep();
-#endif
-
-	}
+	while (true) { }
 }
 
 void main_suspend_action(void)
 {
-	ui_powerdown();
+	// ui_powerdown();
 }
 
 void main_resume_action(void)
 {
-	ui_wakeup();
+	// ui_wakeup();
 }
 
 void main_sof_action(void)
@@ -107,12 +92,12 @@ void main_sof_action(void)
 
 void main_remotewakeup_enable(void)
 {
-	ui_wakeup_enable();
+	// ui_wakeup_enable();
 }
 
 void main_remotewakeup_disable(void)
 {
-	ui_wakeup_disable();
+	// ui_wakeup_disable();
 }
 
 bool main_generic_enable(void)
@@ -126,15 +111,15 @@ void main_generic_disable(void)
 	main_b_generic_enable = false;
 }
 
-void main_hid_set_feature(uint8_t* report)
-{
-	if (report[0] == 0xAA && report[1] == 0x55
-			&& report[2] == 0xAA && report[3] == 0x55) {
-		// Disconnect USB Device
-		udc_stop();
-		ui_powerdown();
-	}
-}
+// void main_hid_set_feature(uint8_t* report)
+// {
+// 	if (report[0] == 0xAA && report[1] == 0x55
+// 			&& report[2] == 0xAA && report[3] == 0x55) {
+// 		// Disconnect USB Device
+// 		udc_stop();
+// 		ui_powerdown();
+// 	}
+// }
 
 /**
  * \mainpage ASF USB Device HID Generic
