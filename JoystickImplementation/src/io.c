@@ -22,10 +22,8 @@
 /****************************************************/
 // Section - Include File Declarations
 /****************************************************/
-// #include "avr_compiler.h"
 #include <asf.h>
-// #include <avr/io.h>
-#include "76319_io_initialization.h"
+#include "io.h"
 
 
 /****************************************************/
@@ -36,24 +34,9 @@ void initialize_PortA_io(void);
 void initialize_PortB_io(void);
 void initialize_PortC_io(void);
 void initialize_PortD_io(void);
-void initialize_Port_E_io(void);
-void initialize_Port_F_io(void);
-void initialize_Port_R_io(void);
-// void 76319_initialize_io(void);
-
-
-//===================================================================
-// Port IO, Input / Output Setup Example
-	// PORTA.DIRCLR = (PIN0_bm | PIN1_bm | PIN2_bm |PIN3_bm | PIN4_bm | PIN5_bm | PIN6_bm | PIN7_bm);    // Example - Port pins as Input
-	// PORTA.PIN2CTRL = PORT_OPC_PULLDOWN_gc;															 // Example - Port input pin declared bit 0 as pulled Down
-	// PORTA.PIN0CTRL = PORT_OPC_PULLUP_gc | PORT_ISC_BOTHEDGES_gc;										 // Example - Port input pin declared bit 0 as pulled up
-	// PORTA.PIN1CTRL = PORT_OPC_PULLUP_gc | PORT_ISC_BOTHEDGES_gc;										 // Example - Port input pin declared bit 0 as pulled up and Interrupting edges
-	// PORTA.INT0MASK = PIN0_bm;																		 // Example - Port input pin declares bit 0 as the Interrupt0 Mask
-	// PORTA.INT1MASK = PIN1_bm;																		 // Example - Port input pin declares bit 1 as the Interrupt1 Mask
-	// PORTA.INTCTRL  = (PORT_INT0LVL_MED_gc | PORT_INT1LVL_MED_gc);									 // Interrupt Control
-
-	// PORTA.DIRSET = (PIN0_bm | PIN1_bm | PIN2_bm |PIN3_bm | PIN4_bm | PIN5_bm | PIN6_bm | PIN7_bm);    // Example - Port pins as Output
-	// PORTA.OUTSET = (PIN0_bm | PIN1_bm | PIN2_bm |PIN3_bm | PIN4_bm | PIN5_bm | PIN6_bm | PIN7_bm);    // Example - Port pin output levels defined
+void initialize_PortE_io(void);
+void initialize_PortF_io(void);
+// void initialize_Port_R_io(void);
 
 
 //********************************************************************
@@ -67,12 +50,8 @@ void initialize_PortA_io(void)
 	//              Bits are LEDs drivers to control the front panel LEDs labeled as 8 to 1.
 	//              LEDs Outputs are "On" when Low, LEDs are "Off" when High.
 
-	// PORTA.DIRSET = (PIN0_bm | PIN1_bm | PIN2_bm |PIN3_bm | PIN4_bm | PIN5_bm | PIN6_bm | PIN7_bm);    // Port as Output
-	// PORTA.OUTSET = (PIN0_bm | PIN1_bm | PIN2_bm |PIN3_bm | PIN4_bm | PIN5_bm | PIN6_bm | PIN7_bm);    // Turn off outputs by setting to logic 1 (LEDs )
-
-	// Test Code
-	// PORTA.OUTCLR = (PIN0_bm | PIN1_bm | PIN2_bm |PIN3_bm | PIN4_bm | PIN5_bm | PIN6_bm | PIN7_bm);    // Turn on outputs by setting to logic 0 (LEDs )
-	// PORTA.OUTSET = (PIN0_bm | PIN1_bm | PIN2_bm |PIN3_bm | PIN4_bm | PIN5_bm | PIN6_bm | PIN7_bm);    // Turn off outputs by setting to logic 1 (LEDs )
+	PORTA.DIRSET = (PIN0_bm | PIN1_bm | PIN2_bm |PIN3_bm | PIN4_bm | PIN5_bm | PIN6_bm | PIN7_bm);    // Port as Output
+	PORTA.OUTSET = (PIN0_bm | PIN1_bm | PIN2_bm |PIN3_bm | PIN4_bm | PIN5_bm | PIN6_bm | PIN7_bm);    // Turn off outputs by setting to logic 1 (LEDs )
 }
 
 
@@ -185,7 +164,7 @@ void initialize_PortD_io(void)
 
 
 //===================================================================
-void initialize_Port_E_io(void)
+void initialize_PortE_io(void)
 {
 	// Initializes all 8 bits of PortE IO as inputs
 	// Initializes   Horizontal Slider Switches port inputs (H_Slider 1 thru 8). (See Port B for remainder of H-Slider switch Positions).
@@ -205,7 +184,7 @@ void initialize_Port_E_io(void)
 
 
 //===================================================================
-void initialize_Port_F_io(void)
+void initialize_PortF_io(void)
 {
 	// Initializes PortF IO - 4 bits are inputs and 4 bits are output for keypad key-code scanning.
 	// One additional keypad key-code scan signal (F2-F4 Column) is also initialized on Port B bit 7. See Inititalize_Port_B_io() above.
@@ -246,14 +225,13 @@ void initialize_Port_F_io(void)
 
 
 //===================================================================
-void _76319_initialize_io(void)
-// void initialize_io(void)
+void io_init(void)
 {
-	// initialize_PortA_io();		// (Alarm LED Signals)
+	initialize_PortA_io();		// (Alarm LED Signals)
 	initialize_PortB_io();		// (Horizontal Slider Switch signals), (Status LED Signal), (F2-F4_COL Keypad Scan Code Signal), (Spare IO)
 	initialize_PortC_io();		// (Vertical Slider Switch signals), (I2C signals)
 	initialize_PortD_io();		// (Vertical Slider Switch signals), (USB signals)
-	initialize_Port_E_io();		// (Horizontal Slider Switch signals)
-	initialize_Port_F_io();		// (COLUMN & ROW Keypad Scan Code signals)
+	initialize_PortE_io();		// (Horizontal Slider Switch signals)
+	initialize_PortF_io();		// (COLUMN & ROW Keypad Scan Code signals)
 	// initialize_Ports_R_io();	// (Unused Port)
 }

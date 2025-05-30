@@ -510,10 +510,10 @@
     <None Include="src\ASF\common\services\clock\xmega\osc.h">
       <SubType>compile</SubType>
     </None>
-    <Compile Include="src\76319_io_initialization.c">
+    <Compile Include="src\io.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="src\76319_io_initialization.h">
+    <Compile Include="src\io.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="src\ASF\common\services\clock\xmega\sysclk.c">

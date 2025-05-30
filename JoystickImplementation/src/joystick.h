@@ -1,8 +1,6 @@
 #ifndef JOYSTICK_H
 #define JOYSTICK_H
 
-// #include <asf.h>  // brings in device headers for XMEGA
-// #include <avr/io.h>
 #include <stdint.h>
 #include "udi_hid_generic.h"
 

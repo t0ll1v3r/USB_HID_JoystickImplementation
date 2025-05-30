@@ -1,13 +1,9 @@
 #include <asf.h>
-#include <avr/io.h>
-#include <stdlib.h>
 #include <util/delay.h>
-// #include "avr_compiler.h"
 
 #include "led.h"
 #include "joystick.h"
 #include "udi_hid_generic.h"
-// #include "76319_io_initialization.h"
 
 #define SLIDER_COUNT   12
 
@@ -44,7 +40,7 @@ static uint16_t jstk_readHoriRaw(void) {
     uint8_t jstk_e = PORTE.IN;
     uint8_t jstk_b = PORTB.IN;
     uint16_t jstk_w = ((uint16_t)jstk_b << 8) | jstk_e;
-    return jstk_w & 0x0FFF;	// B4–B7 are bits 12-15 so get discarded
+    return jstk_w & 0x0FFF;	// B4–B7 = bits 12-15, so they get discarded
 }
 
 int8_t jstk_readHoriIndex(void) {

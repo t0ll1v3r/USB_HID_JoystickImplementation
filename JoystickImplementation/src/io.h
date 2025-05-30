@@ -12,22 +12,13 @@
  * Finished (Place Date here)
  *----------------------------------------
 */
-
+#ifndef IO_H
+#define IO_H
 
 /****************************************************/
-/***************** Function Prototypes **************/
+/***************** Function Prototype ***************/
 /****************************************************/
-void _76319_initialize_io(void);
-// void initialize_io(void);
+void io_init(void);
 
 
-//  *************************************************/
-//  Definitions Section
-//  *************************************************/
-//  No Definitions defined
-
-
-//  *************************************************/
-// Variables Section (externals)
-//  *************************************************/
-// No External Global Variables
+#endif // io.h

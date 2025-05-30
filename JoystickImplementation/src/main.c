@@ -38,11 +38,9 @@
 #include <util/delay.h>
 #include "conf_usb.h"
 
-#include "76319_io_initialization.h"
-// #include "joystick.h"
 #include "led.h"
 #include "ui.h"
-
+#include "io.h"
 
 static volatile bool main_b_generic_enable = false;
 
@@ -74,14 +72,12 @@ int main(void)
 	// Start USB stack to authorize VBus monitoring
 	udc_start();
 
-	_76319_initialize_io();
+	io_init();
 	led_init();
 
 	// main loop manages only the power mode because the USB management is done by interrupt
-	// got rid of power mode so main loop does nothin
-	while (true) {
-		_delay_ms(1);
-	}
+	// i got rid of power mode so main loop does nothin
+	while (true) { }
 }
 
 void main_suspend_action(void)
@@ -99,7 +95,6 @@ void main_sof_action(void)
 	if (!main_b_generic_enable)
 		return;
 	ui_process(udd_get_frame_number());
-	// jstk_usbTask();
 }
 
 void main_remotewakeup_enable(void)

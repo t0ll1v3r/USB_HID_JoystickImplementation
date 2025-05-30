@@ -37,30 +37,11 @@
 #ifndef _UI_H_
 #define _UI_H_
 
-//! \brief Initializes the user interface
-void ui_init(void);
-
-//! \brief Enters the user interface in power down mode
-void ui_powerdown(void);
-
-//! \brief Enables the asynchronous interrupts of the user interface
-void ui_wakeup_enable(void);
-
-//! \brief Disables the asynchronous interrupts of the user interface
-void ui_wakeup_disable(void);
-
-//! \brief Exits the user interface of power down mode
-void ui_wakeup(void);
 
 /*! \brief This process is called each 1ms
  * It is called only if the USB interface is enabled.
- *
- * \param framenumber  Current frame number
  */
 void ui_process(uint16_t framenumber);
 
-//! This function is called when a HID report is received
-//!
-void ui_led_change(uint8_t *report);
 
 #endif // _UI_H_
