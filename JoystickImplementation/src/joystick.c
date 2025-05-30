@@ -57,9 +57,9 @@ int8_t jstk_readHoriIndex(void) {
 
 // joystick USB stuff
 static const uint8_t jstk_idx2axis[12] = {
-    0, 23, 46, 69,
-    92, 116, 139, 162,
-    185, 208, 231, 255
+    0,      23,     46,     69,
+    92,     116,    139,    162,
+    185,    208,    231,    255
 };  // lookup table for the 12 discrete slider positions to avoid long division
 
 uint8_t jstk_idxToAxis(int8_t idx) {
