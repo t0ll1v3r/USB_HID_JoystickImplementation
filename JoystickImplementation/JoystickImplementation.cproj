@@ -348,6 +348,9 @@
     <Folder Include="src\config\" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="src\ui.c">
+      <SubType>compile</SubType>
+    </Compile>
     <None Include="src\asf.h">
       <SubType>compile</SubType>
     </None>
@@ -507,6 +510,12 @@
     <None Include="src\ASF\common\services\clock\xmega\osc.h">
       <SubType>compile</SubType>
     </None>
+    <Compile Include="src\76319_io_initialization.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\76319_io_initialization.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="src\ASF\common\services\clock\xmega\sysclk.c">
       <SubType>compile</SubType>
     </Compile>
@@ -514,9 +523,6 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="src\ASF\common\services\sleepmgr\xmega\sleepmgr.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="src\ASF\common\services\usb\class\hid\device\generic\example\atxmega32a4u_stk600-rc044x\ui.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="src\ASF\common\services\usb\class\hid\device\generic\udi_hid_generic.c">
@@ -544,6 +550,18 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="src\ASF\xmega\drivers\usb\usb_device.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\joystick.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\joystick.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\led.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\led.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="src\main.c">

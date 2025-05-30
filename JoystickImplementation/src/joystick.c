@@ -25,7 +25,7 @@ static int8_t jstk_scan(uint16_t jstk_bits) {
 
 
 // vertical slider
-static uint16_t jstk_readVertRaw(void) { // mostly copied from 76319_keyboard.c
+static uint16_t jstk_readVertRaw(void) { // mostly copied from 76319_KeyPad.c
     uint8_t jstk_c = PORTC.IN;
     uint8_t jstk_d = PORTD.IN;
     uint16_t jstk_w = ((uint16_t)jstk_d << 8) | jstk_c;
@@ -41,7 +41,7 @@ int8_t jstk_readVertIndex(void) {
 }
 
 // horizontal slider
-static uint16_t jstk_readHoriRaw(void) { // mostly copied from 76319_keyboard.c
+static uint16_t jstk_readHoriRaw(void) { // mostly copied from 76319_KeyPad.c
     uint8_t jstk_e = PORTE.IN;
     uint8_t jstk_b = PORTB.IN;
     uint16_t jstk_w = ((uint16_t)jstk_b << 8) | jstk_e;
