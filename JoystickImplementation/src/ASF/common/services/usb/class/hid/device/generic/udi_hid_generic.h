@@ -92,7 +92,7 @@ typedef struct {
    .iface.bDescriptorType     = USB_DT_INTERFACE,\
    .iface.bInterfaceNumber    = UDI_HID_GENERIC_IFACE_NUMBER,\
    .iface.bAlternateSetting   = 0,\
-   .iface.bNumEndpoints       = 2,\
+   .iface.bNumEndpoints       = 1,\
    .iface.bInterfaceClass     = HID_CLASS,\
    .iface.bInterfaceSubClass  = HID_SUB_CLASS_NOBOOT,\
    .iface.bInterfaceProtocol  = HID_PROTOCOL_GENERIC,\
