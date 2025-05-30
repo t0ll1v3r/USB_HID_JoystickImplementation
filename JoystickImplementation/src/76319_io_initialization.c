@@ -61,19 +61,19 @@ void initialize_Port_R_io(void);
 //********************************************************************
 
 //===================================================================
-// void initialize_PortA_io(void)
-// {
-//     // Initializes  PORT A IO bits 7-0 to Outputs.
-// 	//              Bits are LEDs drivers to control the front panel LEDs labeled as 8 to 1.
-// 	//              LEDs Outputs are "On" when Low, LEDs are "Off" when High.
+void initialize_PortA_io(void)
+{
+    // Initializes  PORT A IO bits 7-0 to Outputs.
+	//              Bits are LEDs drivers to control the front panel LEDs labeled as 8 to 1.
+	//              LEDs Outputs are "On" when Low, LEDs are "Off" when High.
 
-// 	PORTA.DIRSET = (PIN0_bm | PIN1_bm | PIN2_bm |PIN3_bm | PIN4_bm | PIN5_bm | PIN6_bm | PIN7_bm);    // Port as Output
-// 	PORTA.OUTSET = (PIN0_bm | PIN1_bm | PIN2_bm |PIN3_bm | PIN4_bm | PIN5_bm | PIN6_bm | PIN7_bm);    // Turn off outputs by setting to logic 1 (LEDs )
+	// PORTA.DIRSET = (PIN0_bm | PIN1_bm | PIN2_bm |PIN3_bm | PIN4_bm | PIN5_bm | PIN6_bm | PIN7_bm);    // Port as Output
+	// PORTA.OUTSET = (PIN0_bm | PIN1_bm | PIN2_bm |PIN3_bm | PIN4_bm | PIN5_bm | PIN6_bm | PIN7_bm);    // Turn off outputs by setting to logic 1 (LEDs )
 
-// 	// Test Code
-// 	// PORTA.OUTCLR = (PIN0_bm | PIN1_bm | PIN2_bm |PIN3_bm | PIN4_bm | PIN5_bm | PIN6_bm | PIN7_bm);    // Turn on outputs by setting to logic 0 (LEDs )
-// 	// PORTA.OUTSET = (PIN0_bm | PIN1_bm | PIN2_bm |PIN3_bm | PIN4_bm | PIN5_bm | PIN6_bm | PIN7_bm);    // Turn off outputs by setting to logic 1 (LEDs )
-// }
+	// Test Code
+	// PORTA.OUTCLR = (PIN0_bm | PIN1_bm | PIN2_bm |PIN3_bm | PIN4_bm | PIN5_bm | PIN6_bm | PIN7_bm);    // Turn on outputs by setting to logic 0 (LEDs )
+	// PORTA.OUTSET = (PIN0_bm | PIN1_bm | PIN2_bm |PIN3_bm | PIN4_bm | PIN5_bm | PIN6_bm | PIN7_bm);    // Turn off outputs by setting to logic 1 (LEDs )
+}
 
 
 //===================================================================
