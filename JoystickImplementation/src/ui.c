@@ -5,5 +5,5 @@
 
 // called every Start-Of-Frame (1 ms) when interface is enabled
 void ui_process(uint16_t framenumber) {
-    jstk_usbTask();
+    joystick();
 }

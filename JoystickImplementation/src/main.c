@@ -39,7 +39,7 @@
 #include "conf_usb.h"
 
 #include "76319_io_initialization.h"
-#include "joystick.h"
+// #include "joystick.h"
 #include "led.h"
 #include "ui.h"
 
@@ -75,9 +75,10 @@ int main(void)
 	udc_start();
 
 	_76319_initialize_io();
+	led_init();
 
-	// The main loop manages only the power mode
-	// because the USB management is done by interrupt
+	// main loop manages only the power mode because the USB management is done by interrupt
+	// got rid of power mode so main loop does nothin
 	while (true) {
 		_delay_ms(1);
 	}
